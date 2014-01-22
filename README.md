@@ -19,3 +19,4 @@ a not-yet-chosen media framework (likely SDL).
 
 * Jiaqi Li
 * Andres Wiltz
+* Imaoye Ekpelu - 22 Jan 2014
