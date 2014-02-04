@@ -1,4 +1,7 @@
-/*
+
+import java.util.*;
+
+/**
  * A containing class for a list of orders that
  * each tank recieves at the beginning of each turn.
  *
@@ -8,32 +11,56 @@
  * The orderqueue is filled during the player's ordering
  * phase before each turn.
  *
+ * @author Nick Lewchenko, Jiaqi Li
+ *
  */
-
-import java.util.LinkedList;
-
 class OrderQueue
 {
-    LinkedList<Order> orders;
+    private int framesLeft;
+    private Queue<Order> orders;
 
     public OrderQueue ()
     {
-        orders = new LinkedList<Order> ();
+        this(100);
+    }
+    public OrderQueue(int framesAllowed){
+        this.framesLeft=framesAllowed;
+        orders = new ArrayDeque<Order> ();
     }
 
-    public void add ( Order o )
-    {
-        orders.add ( o );
+    public int getFramesLeft(){
+        return framesLeft;
     }
-    public void exec ( SimpleTank tank )
+
+    /**
+     * @return 0 when success, 1 when no more frames left.
+     */
+    public int add ( Order o )
     {
-        if ( orders.size() > 0 && orders.element().getFrames() <= 0 )
-        {
-            orders.remove();
+        if(o.getFrames()>framesLeft){
+            return 1;
+        }else{
+            orders.add ( o );
+            framesLeft-=o.getFrames();
+            return 0;
         }
-        if ( orders.size() > 0 )
+    }
+    /**
+     * @return 0 when success, 1 when queue is empty.
+     */
+    public int exec ( SimpleTank tank )
+    {
+        Order o=orders.peek();
+        while(o!=null&&o.getFrames()==0){
+            orders.remove();
+            o=orders.peek();
+        }
+        if ( o !=null )
         {
-            orders.element().exec( tank );
+            o.exec( tank );
+            return 0;
+        }else{
+            return 1;
         }
     }
 }
