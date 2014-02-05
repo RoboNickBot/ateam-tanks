@@ -22,9 +22,9 @@ class Position
     }
     public Position ( Position p )
     {
-        p.x = x;
-        p.y = y;
-        p.z = z;
+        x = p.getX ();
+        y = p.getY ();
+        z = p.getZ ();
     }
     
     //This is supposed to be a simple way of producing adjacent positions for movement
