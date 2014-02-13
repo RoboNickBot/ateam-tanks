@@ -14,6 +14,7 @@
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.geom.*;
+import java.awt.Color;
 
 public abstract class Sprite
 {
@@ -22,8 +23,9 @@ public abstract class Sprite
     protected Direction direction;
     protected HitBox hitbox;
     protected double hitboxRadius=10;
+    protected Color color;
 
-    public Sprite ( ArrayList<Sprite> sprites, Vector3D p, Direction d, HitBox h )
+    public Sprite ( ArrayList<Sprite> sprites, Vector3D p, Direction d, HitBox h, Color c )
     {
         this.sprites = sprites;
         this.sprites.add ( this );
@@ -31,6 +33,7 @@ public abstract class Sprite
         this.position= new Vector3D ( p );
         this.direction = new Direction ( d );
         this.hitbox = new HitBox ( h );
+        this.color = c;
     }
 
     public abstract int update ();
@@ -75,6 +78,14 @@ public abstract class Sprite
     public void setDirection ( Direction d )
     {
         this.direction = d;
+    }
+    public Color getColor ()
+    {
+        return color;
+    }
+    public void setColor (Color c) 
+    {
+        this.color = c;
     }
 
     public void kill ()

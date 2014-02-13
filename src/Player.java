@@ -6,21 +6,24 @@
  * that gives no orders, for testing purposes
  */
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class Player
 {
     private String playerName;
+    private Color color;
 
     /* This is a list to allow for multiple owned units
      * per player if we wish to later implement that
      */
     protected ArrayList<SimpleTank> ownedTanks;
 
-    public Player ( String name, ArrayList<SimpleTank> tanks )
+    public Player ( String name, ArrayList<SimpleTank> tanks , Color c)
     {
         playerName = name;
         ownedTanks = tanks;
+	color = c;
     }
 
     /**
@@ -53,5 +56,9 @@ public class Player
     public String getName ()
     {
         return playerName;
+    }
+    public Color getColor ()
+    {
+        return color;
     }
 }

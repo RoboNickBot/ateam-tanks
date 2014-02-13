@@ -9,6 +9,7 @@
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.geom.*;
+import java.awt.Color;
 
 class SimpleTank extends Sprite
 {
@@ -17,9 +18,9 @@ class SimpleTank extends Sprite
     private double handling; //how far a frame of TurnOrder will turn the tank
     private OrderQueue orders;
 
-    public SimpleTank ( ArrayList<Sprite> sprites, ArrayList<SimpleTank> playerTanks, Vector3D position, Direction direction, double speed, double handling )
+    public SimpleTank ( ArrayList<Sprite> sprites, ArrayList<SimpleTank> playerTanks, Vector3D position, Direction direction, double speed, double handling , Color c)
     {
-        super ( sprites, position, direction, new HitBox ( 10, 5, 5 ) );
+        super ( sprites, position, direction, new HitBox ( 10, 5, 5 ), c );
         this.speed = speed;
         this.handling = handling;
         OrderQueue orders = new OrderQueue ();
@@ -51,16 +52,14 @@ class SimpleTank extends Sprite
         orders.exec( this );
         return 0;
     }
-    /*
     public void paint(Graphics2D g){
         double radius=100;
-        g.setColor(Color.red);
+        g.setColor(color);
         g.fill(Sprite.getCircle(position.getX(),position.getY(),radius));
-        g.setColor(Color.blue);
-        double direction=this.direction.getValue()*Math.PI/180;
+        g.setColor(Color.black);
+        double direction=this.direction.getTheta()*Math.PI/180;
         g.draw(new Line2D.Double(position.getX(),position.getY(),position.getX()+Math.cos(direction)*radius,
                                                    position.getY()+Math.sin(direction)*radius));
     }
-    */
-    
+
 }

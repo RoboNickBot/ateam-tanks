@@ -17,6 +17,11 @@ public class Direction
         theta=dir;
         phi=0;
     }
+    public Direction ( double dir, double phi)
+    {
+        this.theta = dir;
+        this.phi = phi;
+    }
     public Direction ( Direction other )
     {
         this.theta=other.theta;
@@ -26,12 +31,6 @@ public class Direction
     {
         this.theta=round(other.theta+offset.theta);
         this.phi=bound(other.phi+offset.phi);
-    }
-
-    @Deprecated
-    public double getValue ()
-    {
-        return theta;
     }
     public double getTheta(){
         return theta;

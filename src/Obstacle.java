@@ -7,13 +7,14 @@
  *
  */
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class Obstacle extends Sprite
 {
-    public Obstacle ( ArrayList<Sprite> sprites, Vector3D position, Direction direction, HitBox box )
+    public Obstacle ( ArrayList<Sprite> sprites, Vector3D position, Direction direction, HitBox box, Color c )
     {
-        super ( sprites, position, direction, box );
+        super ( sprites, position, direction, box, c );
     }
 
     /**
