@@ -19,6 +19,7 @@
 
 import java.util.ArrayList;
 
+
 /**
  * This class is abstracts the workings of the sprite list.
  *
@@ -40,30 +41,26 @@ public class SpriteList
     private ArrayList<Sprite> sprites;
     private ArrayList<Sprite> toBeAdded;
     private ArrayList<Sprite> toBeRemoved;
-
-    public SpriteList ()
     {
         this . sprites = new ArrayList<Sprite>();
         this . toBeAdded = new ArrayList<Sprite>();
         this . toBeRemoved = new ArrayList<Sprite>();
-    }
-    public SpriteList ( SpriteList other )
-    {
-        this . sprites = new ArrayList<Sprite>( other.sprites );
-        this . toBeAdded = new ArrayList<Sprite>( other.toBeAdded );
-        this . toBeRemoved = new ArrayList<Sprite>( other.toBeRemoved );
-    }
+    }   
+    
     public SpriteList ( ArrayList<Sprite> initial )
     {
         this . sprites = initial;
         this . toBeAdded = new ArrayList<Sprite>();
         this . toBeRemoved = new ArrayList<Sprite>();
     }
+    
+    
 
     public ArrayList<Sprite> getSprites ()
     {
         return sprites;
     }
+  
     public void add ( Sprite newSprite )
     {
         this . toBeAdded . add ( newSprite );
@@ -86,4 +83,17 @@ public class SpriteList
         }
         this . toBeAdded = new ArrayList<Sprite>();
     }
+    
+    public SpriteList clone()
+    { 	
+    	SpriteList clone;
+    	try {
+			clone =(SpriteList)super.clone();
+		} 
+    	catch (CloneNotSupportedException e) {
+			throw new Error();
+		}
+    	return clone; 
+    }
+    
 }

@@ -54,7 +54,7 @@ public abstract class Sprite
         this.hitbox = new HitBox ( h );
         this.color = c;
     }
-
+   
     public abstract int update ();
 
     public abstract void damage ( int intensity );
@@ -116,4 +116,21 @@ public abstract class Sprite
     public static Arc2D.Double getCircle(double x,double y,double radius){
         return new Arc2D.Double(x-radius,y-radius,radius*2,radius*2,0,360,Arc2D.CHORD);
     }
+    
+    public Sprite clone()
+    {
+    	Sprite clone;
+    	try {
+			clone= (Sprite) super.clone();
+		} 
+    	catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			throw new Error();
+		}
+    	return clone;
+    	
+    }
+    
+    
+    
 }

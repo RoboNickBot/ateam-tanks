@@ -53,7 +53,7 @@ public class Game
 
         this.mapsize = mapsize;
     }
-
+    
     public int run ()
     {
         display.initializeDisplay ( sprites, mapsize );
@@ -107,4 +107,18 @@ public class Game
 
         return 0;
     }
+    
+    public Game clone()
+    {
+        Game clone;
+        try{
+        	clone= (Game)super.clone();
+        }
+        catch (CloneNotSupportedException e) {
+        	throw new Error();
+        }
+        return clone;
+    }
+    
+    
 }

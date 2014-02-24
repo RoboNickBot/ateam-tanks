@@ -37,7 +37,7 @@ public abstract class Order
         assert(frames>=0):"frames less than 0.";
         this.frames = frames;
     }
-
+    
     public void exec ( SimpleTank tank )
     {
         this.execSpecific ( tank );
@@ -50,4 +50,19 @@ public abstract class Order
     {
         return frames;
     }
+    
+    public Order clone()
+    {
+    	Order clone;
+    	try {
+			clone= (Order) super.clone();
+		} 
+    	catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			throw new Error();
+		}
+    	return clone;
+    	
+    }
+      
 }

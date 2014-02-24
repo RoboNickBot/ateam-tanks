@@ -82,4 +82,20 @@ class OrderQueue
             return 1;
         }
     }
+    
+    public OrderQueue clone()
+    {
+    	OrderQueue clone;
+    	try {
+			clone= (OrderQueue) super.clone();
+		} 
+    	catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			throw new Error();
+		}
+    	return clone;
+    	
+    }
+    
+    
 }
