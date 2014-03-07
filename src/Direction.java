@@ -76,4 +76,9 @@ public class Direction
             return dir;
         }
     }
+    public Direction clond() {
+    	Direction clone= new Direction(this.theta);
+    	return clone;
+    }
+    
 }

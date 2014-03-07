@@ -90,4 +90,9 @@ public class Vector3D
     public double distance(Vector3D v){
         return Math.sqrt((v.x-x)*(v.x-x)+(v.y-y)*(v.y-y)+(v.z-z)*(v.z-z));
     }
+    
+    public Vector3D clone() {
+    	Vector3D clone= new Vector3D(this.x,this.y,this.z);
+    	return clone;
+    }
 }

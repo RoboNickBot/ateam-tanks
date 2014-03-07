@@ -64,5 +64,11 @@ class DummyUI implements InterfaceWithGame
     {
         System.out.println ( "The winner appears to be " + winnerName + "." );
     }
+    
+    
+    // ask about the implements interface with game part
+    //public DummyUI clone {
+    	//DummyUI clone= new 
+    //}
 }
 

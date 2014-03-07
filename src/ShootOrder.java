@@ -39,4 +39,8 @@ public class ShootOrder extends Order
             tank . shoot ( this . direction );
         }
     }
+    public ShootOrder clone() {
+    	ShootOrder clone= new ShootOrder(this.direction.getTheta());
+    	return clone;
+    }
 }

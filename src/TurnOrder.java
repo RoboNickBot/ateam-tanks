@@ -46,4 +46,9 @@ public class TurnOrder extends Order
     {
         tank.setDirection ( new Direction ( tank.getDirection().getTheta() + direction * tank.getHandling () ) );
     }
+    
+    public TurnOrder clone(){ 
+    	TurnOrder clone= new TurnOrder(this.frames,this.direction);
+    	return clone;
+    }
 }

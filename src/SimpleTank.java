@@ -100,4 +100,10 @@ class SimpleTank extends Sprite
         g.draw(new Line2D.Double(position.getX(),position.getY(),position.getX()+Math.cos(direction)*radius,
                                                    position.getY()+Math.sin(direction)*radius));
     }
+    
+    // worried about the array list of player tanks i don't think it is cloned properly
+    public SimpleTank clone() {
+    	SimpleTank clone = new SimpleTank(this.sprites,this.playerTanks,this.position,this.direction,this.speed,this.handling,this.color);
+    	return clone;
+    }
 }

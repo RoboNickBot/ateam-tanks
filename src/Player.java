@@ -37,12 +37,13 @@ public class Player
      * per player if we wish to later implement that
      */
     protected ArrayList<SimpleTank> ownedTanks;
+	private ArrayList<SimpleTank> tankcopy;
 
     public Player ( String name, ArrayList<SimpleTank> tanks , Color c)
     {
         playerName = name;
         ownedTanks = tanks;
-	color = c;
+        color = c;
     }
 
     /**
@@ -80,4 +81,15 @@ public class Player
     {
         return color;
     }
+    // worried ownedTanks will cause problems because it is an array
+    public Player clone() {
+    	Object[] copy=  ownedTanks.toArray();
+		for(int i = 0; i> ownedTanks.size(); i++) {
+			tankcopy.add(this.ownedTanks.get(i));
+    		}
+    	Player clone= new Player(playerName,tankcopy,color );
+    	return clone;
+    }
+    
+    
 }

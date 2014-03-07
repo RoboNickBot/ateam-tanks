@@ -42,6 +42,7 @@ public class Game
     private int turnLimit;
     private int mapsize;
     private Console console;
+	private ArrayList<Player> playerscopy;
 
     public Game ( ArrayList<Player> p, SpriteList s, InterfaceWithGame d, int frames, int turns, int mapsize )
     {
@@ -120,4 +121,15 @@ public class Game
         display.cleanUpAndDestroyDisplay ();
         return 0;
     }
+    
+    public Game clone() {
+      	Object[] copy=  players.toArray();
+    		for(int i = 0; i> players.size(); i++) {
+    			playerscopy.add(this.players.get(i));
+        		}
+    	Game clone = new Game(playerscopy,sprites.clone(), display,framesPerTurn,turnLimit, this.mapsize);
+    	return clone;
+    }
+    
+    
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright 2014 A-Team Games
+  * Copyright 2014 A-Team Games
  *
  * This file is part of ateam-tanks.
  *
@@ -101,4 +101,7 @@ public abstract class Sprite extends Object
     public static Arc2D.Double getCircle(double x,double y,double radius){
         return new Arc2D.Double(x-radius,y-radius,radius*2,radius*2,0,360,Arc2D.CHORD);
     }
+    
+    public  abstract Sprite clone(); 
+    
 }
