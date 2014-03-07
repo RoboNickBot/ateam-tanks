@@ -48,4 +48,9 @@ public class MoveOrder extends Order
             tank.setPosition(oldPosition);
         }
     }
+    
+    public MoveOrder clone() {
+    	MoveOrder clone = new MoveOrder(this.getFrames(),this.direction);
+    	return clone();
+    }
 }

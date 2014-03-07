@@ -96,4 +96,25 @@ public class SpriteList
         }
         this . toBeAdded = new ArrayList<Sprite>();
     }
+    // not sure how to clone this one
+    public SpriteList clone() {
+    	SpriteList clone = new SpriteList();
+    	if(!this.sprites.isEmpty()) {
+    		for(int i = 0; i> this.sprites.size(); i++) {
+    			clone.sprites.add(this.sprites.get(i));
+    		}
+    	}
+    	if(!this.toBeAdded.isEmpty()) {
+    		for(int i = 0; i> this.toBeAdded.size(); i++) {
+    			clone.toBeAdded.add(this.toBeAdded.get(i));
+    		}
+    	}
+    	if(!this.toBeRemoved.isEmpty()) {
+    		for(int i = 0; i> this.toBeRemoved.size(); i++) {
+    			clone.toBeRemoved.add(this.toBeRemoved.get(i));
+    		}
+    	}
+    	return clone;
+    	
+    }
 }

@@ -62,4 +62,9 @@ public class HitBox
     {
         return height;
     }
+    
+    public HitBox clone() {
+    	HitBox clone= new HitBox(this.length,this.width,this.height);
+    	return clone;
+    }
 }

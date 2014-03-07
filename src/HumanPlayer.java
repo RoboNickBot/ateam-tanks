@@ -41,4 +41,9 @@ public class HumanPlayer extends Player
             tank.giveOrders ( display.askForOrders ( this . playerName, frameLimit, tank) );
         }
     }
+    // need to do something about the array of tanks
+    public HumanPlayer clone() {
+    	HumanPlayer clone = new HumanPlayer(this.display ,this.getName() ,this.ownedTanks ,this.getColor());
+    	return null;
+    }
 }

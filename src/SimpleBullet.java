@@ -59,4 +59,9 @@ public class SimpleBullet extends Projectile
             this . kill (); // deletes self from game upon any sort of damage
         }
     }
+    
+    public SimpleBullet clone() {
+    	SimpleBullet clone = new SimpleBullet(this.sprites,this.position,this.direction);
+    	return clone;
+    }
 }

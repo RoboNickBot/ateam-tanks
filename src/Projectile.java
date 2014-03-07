@@ -68,4 +68,8 @@ public abstract class Projectile extends Sprite
             return 0;
         }
     }
+    public abstract Projectile clone(); 
+    
+    	
+    
 }

@@ -53,4 +53,9 @@ public class Obstacle extends Sprite
         g.setColor(Color.white);
         g.fill(Sprite.getCircle(position.getX(),position.getY(),radius));
     }
+    
+    public Obstacle clone() {
+    	Obstacle clone = new Obstacle(this.sprites,this.position,this.direction,this.hitboxRadius);
+    	return clone;
+    }
 }
