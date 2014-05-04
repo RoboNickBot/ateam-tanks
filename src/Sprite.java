@@ -41,7 +41,7 @@ public abstract class Sprite extends Object implements Serializable
     protected Vector3D position;
     protected Direction direction;
     protected boolean alive;
-    protected double hitboxRadius;
+    protected Hitbox hitbox;
     protected int playerID; // identifies owning player (if any; 0 means none)
     protected int unitNum; // identifies self out of owning player's units
 
@@ -49,7 +49,7 @@ public abstract class Sprite extends Object implements Serializable
     {
         this.position = new Vector3D(p);
         this.direction = new Direction(d);
-        this.hitboxRadius = hr;
+        this.hitbox = new Hitbox(hr,hr,hr);
         this.alive = true;
         this.playerID = 0; // indicating unowned
         this.unitNum = 0;
@@ -70,7 +70,7 @@ public abstract class Sprite extends Object implements Serializable
 
     public boolean checkCollision(Sprite other)
     {
-        return position.distance(other.position)<hitboxRadius+other.hitboxRadius;
+        return Hitbox.ifHit(this.hitbox, this.position, this.direction.getTheta(),other.hitbox, other.position, other.direction.getTheta());
     }
 
     public ArrayList<Sprite> getAllCollisions (SpriteList sprites)

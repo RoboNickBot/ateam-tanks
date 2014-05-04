@@ -30,6 +30,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.awt.Graphics2D;
 import java.io.*;
+import java.awt.geom.Area;
 
 public class Obstacle extends Sprite implements Serializable
 {
@@ -55,8 +56,8 @@ public class Obstacle extends Sprite implements Serializable
         // damage does not affect it, does nothing
     }
     public void paint(Graphics2D g){
-        double radius=this.hitboxRadius;
+        Area area = Hitbox.getArea(this.hitbox,this.position,this.direction.getTheta());
         g.setColor(Color.white);
-        g.fill(Sprite.getCircle(position.getX(),position.getY(),radius));
+        g . fill (area);
     }
 }
