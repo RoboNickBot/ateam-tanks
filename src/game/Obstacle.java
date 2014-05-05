@@ -36,9 +36,12 @@ import java.awt.geom.Area;
 
 public class Obstacle extends Sprite implements Serializable
 {
+    private double hitboxRadius;
+
     public Obstacle(Vector3D position, Direction direction, double hitboxRadius)
     {
         super (position, direction, hitboxRadius );
+        this.hitboxRadius = hitboxRadius;
     }
 
     public Obstacle clone()

@@ -23,7 +23,9 @@ package game;
  * hitbox's center is the actual position
  */
 import java.awt.geom.*;
-public class Hitbox{
+import java.io.*;
+
+public class Hitbox implements Serializable {
     //x span
     private double width;
     //y span

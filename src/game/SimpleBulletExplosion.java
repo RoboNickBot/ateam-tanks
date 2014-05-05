@@ -61,13 +61,13 @@ public class SimpleBulletExplosion extends Sprite implements Serializable
             case 5:
             case 4:
                 c = Color.orange;
-                this . hitboxRadius = 3;
+                this . hitbox = new Hitbox(3, 3, 3);
                 break;
             case 3:
             case 2:
             case 1:
                 c = Color.red;
-                this . hitboxRadius = 2;
+                this . hitbox = new Hitbox(2, 2, 2);
                 break;
             case 0:
                 this . kill (sprites);
@@ -91,6 +91,7 @@ public class SimpleBulletExplosion extends Sprite implements Serializable
     {
         Area area = Hitbox.getArea(this.hitbox,this.position,this.direction.getTheta());
         g . setColor ( this . c );
-        g . fill ( Sprite.getCircle(position.getX(),position.getY(),radius ) );
+        //g . fill ( Sprite.getCircle(position.getX(),position.getY(),radius ) );
+        g . fill( area );
     }
 }
