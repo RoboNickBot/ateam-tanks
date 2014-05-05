@@ -42,7 +42,7 @@ public class SpritesEvent implements event.Event<GameClient>
         switch(t)
         {
             case ORDER:
-                client.toGW(new event.gw.GetOrdersEvent(this.initList, this.ID));
+                client.toGW(new event.gw.GetOrdersEvent(this.initList, this.ID, client.getPlayerName()));
                 break;
             case PLAY:
                 client.toGW(new event.gw.DisplayEvent(this.initList, this.ID));

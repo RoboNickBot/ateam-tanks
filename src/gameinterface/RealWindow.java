@@ -17,31 +17,36 @@
  *    along with ateam-tanks.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package event.gw;
+package gameinterface;
 
 import game.*;
-import gameinterface.*;
 import network.*;
+import event.*;
+
 import java.util.*;
 
-public class GetOrdersEvent implements event.Event<GWindow>
+public class RealWindow extends GWindow
 {
 
-    private SpriteList list;
-    private int ID;
-    private String playerName;
+    DemoPanel demoPanel;
 
-    public GetOrdersEvent(SpriteList ss, int ID, String pn)
+    public RealWindow(GameClient c, DemoPanel d)
     {
-        this.list = ss;
-        this.ID = ID;
-        this.playerName = pn;
+        super(c);
+        c.setWin(this);
+        this.demoPanel = d;
+        demoPanel.initializeDisplay(400);
+        this.start();
     }
 
-    public void handle(GWindow win)
+    public ArrayList<OrderQueue> makeOrders(SpriteList sprites, int ID, String playerName)
     {
-        ArrayList<OrderQueue> orders = win.makeOrders(this.list, this.ID, this.playerName);
-        win.toClient(new event.client.FwdUserEvent(new event.user.OrdersEvent(orders)));
+        return demoPanel.askForOrders(sprites, ID, playerName);
+    }
+
+    public void runAndDisplay(SpriteList sprites, int ID)
+    {
+        sprites.runTurn(demoPanel);
     }
 
 }

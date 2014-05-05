@@ -38,7 +38,7 @@ public class GameStartEvent implements event.Event<GameClient>
     public void handle(GameClient client)
     {
         System.out.println(client.getPlayerName() + ": start sprites received");
-        client.toGW(new event.gw.GetOrdersEvent(this.initList, this.ID));
+        client.toGW(new event.gw.GetOrdersEvent(this.initList, this.ID, client.getPlayerName()));
     }
 
 }

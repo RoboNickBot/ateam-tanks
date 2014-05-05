@@ -17,31 +17,25 @@
  *    along with ateam-tanks.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package event.gw;
+package test;
 
 import game.*;
-import gameinterface.*;
 import network.*;
-import java.util.*;
+import event.*;
+import gameinterface.*;
 
-public class GetOrdersEvent implements event.Event<GWindow>
+import java.io.Console;
+
+public class ServerStandaloneTest extends Thread
 {
 
-    private SpriteList list;
-    private int ID;
-    private String playerName;
-
-    public GetOrdersEvent(SpriteList ss, int ID, String pn)
+    public static void main(String[] args)
     {
-        this.list = ss;
-        this.ID = ID;
-        this.playerName = pn;
-    }
-
-    public void handle(GWindow win)
-    {
-        ArrayList<OrderQueue> orders = win.makeOrders(this.list, this.ID, this.playerName);
-        win.toClient(new event.client.FwdUserEvent(new event.user.OrdersEvent(orders)));
+        System.out.println("----- Server Start -----");
+        GameServer server = new GameServer(3, 8887);
+        System.console().readLine("Press enter to kill server");
+        server.push(new event.server.ShutdownEvent("killin you"));
+        System.out.println("----- Tests complete -----");
     }
 
 }
