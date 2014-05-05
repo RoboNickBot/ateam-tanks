@@ -1,0 +1,9 @@
+Start
+
+obstacle,30,50,5,10
+obstacle,50,90,5,5
+obstacle,4,15,5,3
+obstacle,10,18,5,8
+
+End
+
