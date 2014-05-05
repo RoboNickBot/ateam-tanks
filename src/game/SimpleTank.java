@@ -32,6 +32,7 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.awt.Color;
 import java.io.*;
+import java.awt.geom.Area;
 
 public class SimpleTank extends Sprite implements Serializable
 {
@@ -133,13 +134,14 @@ public class SimpleTank extends Sprite implements Serializable
 
     public void paint(Graphics2D g)
     {
-        double radius=this.hitboxRadius;
+        Area area = Hitbox.getArea(this.hitbox,this.position,this.direction.getTheta());
         g.setColor(this.color);
-        g.fill(Sprite.getCircle(position.getX(),position.getY(),radius));
+        g . fill (area);
+
         g.setColor(Color.black);
         double direction=this.direction.getTheta()*Math.PI/180;
-        g.draw(new Line2D.Double(position.getX(),position.getY(),position.getX()+Math.cos(direction)*radius,
-                                                   position.getY()+Math.sin(direction)*radius));
+        g.draw(new Line2D.Double(position.getX(),position.getY(),position.getX()+Math.cos(direction)*this.hitbox.getWidth()/2,
+          position.getY()+Math.sin(direction)*this.hitbox.getWidth()/2));
     }
 
 }

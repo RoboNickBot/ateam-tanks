@@ -22,6 +22,7 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.*;
+import java.awt.geom.Area;
 
 public class SimpleBulletExplosion extends Sprite implements Serializable
 {
@@ -88,7 +89,7 @@ public class SimpleBulletExplosion extends Sprite implements Serializable
 
     public void paint ( Graphics2D g )
     {
-        double radius = this . hitboxRadius;
+        Area area = Hitbox.getArea(this.hitbox,this.position,this.direction.getTheta());
         g . setColor ( this . c );
         g . fill ( Sprite.getCircle(position.getX(),position.getY(),radius ) );
     }
