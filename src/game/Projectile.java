@@ -73,4 +73,11 @@ public abstract class Projectile extends Sprite implements Serializable
             return 0;
         }
     }
+    // method was added for giving bullets an arc -B
+    public void changegravity() {
+    	Vector3D biggravity = new Vector3D(0,0,-2);
+    	this.gravity.add(biggravity); 
+    	
+    }
+    
 }

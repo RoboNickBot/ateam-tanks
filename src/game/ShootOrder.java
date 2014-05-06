@@ -34,6 +34,11 @@ public class ShootOrder extends Order
         // this type of bullet does not allow for adjusting the inclination -- it can only shoot parallel to the ground
         this . direction = new Direction ( theta, 0 );
     }
+    
+    //method to adjust for inclination in bullets -B 
+    public void adjust(double x) {
+    	this.direction.changephi(x);
+    }
 
     public ShootOrder clone()
     {
