@@ -80,6 +80,7 @@ public class DemoPanel extends JPanel implements DisplaysGame, GetsOrders/*, Key
         //    System.out.println ( sprite.getPosition().toString() );
         //}
     }
+
     @Override
     public ArrayList<OrderQueue> askForOrders (SpriteList s, int id, String playerName){
         this.sprites = s;

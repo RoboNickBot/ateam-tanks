@@ -35,7 +35,7 @@ public abstract class GWindow extends ConcreteDropBox<GWindow>
         this.client = c;
     }
 
-    public abstract ArrayList<OrderQueue> makeOrders(SpriteList sprites, int ID);
+    public abstract ArrayList<OrderQueue> makeOrders(SpriteList sprites, int ID, String playerName);
 
     public abstract void runAndDisplay(SpriteList sprites, int ID);
 

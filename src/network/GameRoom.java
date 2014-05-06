@@ -166,7 +166,7 @@ public class GameRoom extends Room
             this.users.get(uname).push(new event.user.FwdClientEvent(new event.client.SpritesEvent(SpriteType.PLAY, this.sprites.clone(), thisId)));
         }
         this.sprites.runTurn();
-        clearDeadPlayers();
+        clearPlayers(getDeadPlayers());
         if (this.maxTurns < 1)
         {
             for (String uname : this.users.keySet())
@@ -208,7 +208,10 @@ public class GameRoom extends Room
 
     public void depositOrders(String playerName, ArrayList<OrderQueue> os)
     {
-        this.players.get(playerName).setOrders(os);
+        if(this.players.get(playerName) != null) // check if user is still alive
+        {
+            this.players.get(playerName).setOrders(os);
+        }
         boolean ready = true;
         for (String pname : this.players.keySet())
         {
@@ -246,8 +249,9 @@ public class GameRoom extends Room
         }
     }
 
-    private void clearDeadPlayers()
+    private ArrayList<String> getDeadPlayers()
     {
+        ArrayList<String> output = new ArrayList<String>();
         for (String pname : this.players.keySet())
         {
             boolean dead = true;
@@ -260,10 +264,23 @@ public class GameRoom extends Room
             }
             if (dead)
             {
-                System.out.println(pname + " has been destroyed.");
-                this.users.get(pname).push(new event.user.FwdClientEvent(new event.client.ChatEvent(this.name, "room", "You are dead")));
-                this.players.remove(pname);
+                output.add(pname);
             }
         }
+        return output;
     }
+
+    private void clearPlayers(ArrayList<String> names)
+    {
+        for(String pname : names)
+        {
+            System.out.println(pname + " has been destroyed.");
+            if(this.users.get(pname) != null) // check if they are a bot
+            {
+                this.users.get(pname).push(new event.user.FwdClientEvent(new event.client.ChatEvent(this.name, "room", "You are dead")));
+            }
+            this.players.remove(pname);
+        }
+    }
+
 }

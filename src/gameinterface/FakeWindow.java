@@ -34,7 +34,7 @@ public class FakeWindow extends GWindow
         this.start();
     }
 
-    public ArrayList<OrderQueue> makeOrders(SpriteList sprites, int ID)
+    public ArrayList<OrderQueue> makeOrders(SpriteList sprites, int ID, String playerName)
     {
         System.out.println("doin sprite stuff");
         return new ArrayList<OrderQueue>();

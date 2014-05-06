@@ -43,6 +43,12 @@ public class GameClient extends ConcreteDropBox<GameClient>
         this.start();
     }
 
+    public void setWin(DropBox<GWindow> win)
+    {
+        this.gameWindow.killingYou();
+        this.gameWindow = win;
+    }
+
     public void toUser(Event<User> ev)
     {
         this.outBox.push(ev);
