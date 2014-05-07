@@ -210,7 +210,7 @@ public class DemoPanel extends JPanel implements DisplaysGame, GetsOrders, Mouse
             g2.setColor(Color.white);
             g2.draw(this.markSprite.mark());
             g2.setTransform(getOtherTransform());
-            g2.drawString("You have " + this.framesLeft + " frames left for this tank.", -390, -380);
+            g2.drawString("You have " + this.framesLeft + " frames left for this tank.  Press F to switch to next unit or finish.", -390, -380);
         }
     }
     public void mouseClicked(MouseEvent e){

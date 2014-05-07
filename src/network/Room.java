@@ -65,6 +65,11 @@ public class Room extends ConcreteDropBox<Room>
         return false;
     }
 
+    public String roomLeft()
+    {
+        return "lots";
+    }
+
     public boolean isGameRunning()
     {
         return false;

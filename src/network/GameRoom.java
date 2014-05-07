@@ -72,6 +72,7 @@ public class GameRoom extends Room
         {
             this.users.put(user.getPlayerName(), user);
             user.push(new event.user.RoomAcceptEvent(this));
+            toServer(new event.server.InfoUpdateEvent());
         }
         else
         {
@@ -82,6 +83,7 @@ public class GameRoom extends Room
     public void removeUser(User user)
     {
         this.users.remove(user.getPlayerName());
+        toServer(new event.server.InfoUpdateEvent());
         if(user.getPlayerName().equals(this.creator))
         {
             System.out.println("CLOSINGGAMEBECAUSECREATORLEFT");
@@ -136,6 +138,11 @@ public class GameRoom extends Room
             return true;
         }
         return false;
+    }
+
+    public String roomLeft()
+    {
+        return "(" + this.users.size() + "/" + this.maxPlayers + ")";
     }
 
     public boolean isGameRunning()
