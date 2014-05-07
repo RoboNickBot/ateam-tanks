@@ -63,12 +63,18 @@ public class ClientWindow extends JFrame
         this.add(this.demoPanel, BorderLayout.CENTER);
         this.add(this.messages, BorderLayout.PAGE_END);
         this.add(this.buttons, BorderLayout.PAGE_START);
+        this.addKeyListener(demoPanel);
         this.setVisible(true);
     }
 
     public void updateServerInfo(String info)
     {
         this.messages.updateServerInfo(info);
+    }
+
+    public void resetFocus()
+    {
+        this.demoPanel.requestFocus();
     }
 
     public void newChatMessage(String sender, String status, String message)

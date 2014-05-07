@@ -39,7 +39,7 @@ import java.awt.event.*;
 public class ButtonPanel extends JPanel
 {
 
-    private JFrame frame;
+    final ClientWindow frame;
     final CWindow win;
     private JButton connect;
     private JButton quit;
@@ -49,7 +49,7 @@ public class ButtonPanel extends JPanel
     private JButton start;
     private JButton part;
 
-    public ButtonPanel(final JFrame frame, final CWindow win)
+    public ButtonPanel(final ClientWindow frame, final CWindow win)
     {
         this.frame = frame;
         this.setLayout(new GridLayout(0, 4));
@@ -62,6 +62,7 @@ public class ButtonPanel extends JPanel
             public void actionPerformed(ActionEvent e) {
                 String hostname = askForString("Enter Server Hostname:", "localhost");
                 win.toClient(new event.client.JoinServerEvent(hostname));
+                frame.resetFocus();
             }
         } );
 
@@ -71,6 +72,7 @@ public class ButtonPanel extends JPanel
         this.disconnect.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 win.toClient(new event.client.PartServerEvent("The disconnect button was pressed"));
+                frame.resetFocus();
             }
         } );
 
@@ -80,6 +82,7 @@ public class ButtonPanel extends JPanel
         this.quit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 win.toClient(new event.client.ShutdownEvent());
+                frame.resetFocus();
             }
         } );
 
@@ -90,6 +93,7 @@ public class ButtonPanel extends JPanel
             public void actionPerformed(ActionEvent e) {
                 String gamename = askForString("Enter Game Name:", "");
                 win.toClient(new event.client.FwdUserEvent(new event.user.CreateRoomEvent(gamename, SpriteListGen.mkList())));
+                frame.resetFocus();
             }
         } );
         
@@ -100,6 +104,7 @@ public class ButtonPanel extends JPanel
             public void actionPerformed(ActionEvent e) {
                 String gamename = askForString("Enter Game Name:", "");
                 win.toClient(new event.client.FwdUserEvent(new event.user.JoinRoomEvent(gamename)));
+                frame.resetFocus();
             }
         } );
         
@@ -109,6 +114,7 @@ public class ButtonPanel extends JPanel
         this.part.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 win.toClient(new event.client.FwdUserEvent(new event.user.PartRoomEvent("user quit")));
+                frame.resetFocus();
             }
         } );
 
@@ -118,6 +124,7 @@ public class ButtonPanel extends JPanel
         this.start.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 win.toClient(new event.client.FwdUserEvent(new event.user.StartGameEvent()));
+                frame.resetFocus();
             }
         } );
 

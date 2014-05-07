@@ -53,6 +53,7 @@ public class RealWindowTest extends Thread
         frame.setSize(500,500);
         frame.setLayout(new BorderLayout());
         frame.add(ui,BorderLayout.CENTER);
+        frame.addKeyListener(ui);
         frame.setVisible(true);
         // init and start game client
         GameClient c1 = new GameClient(username, 8887);
