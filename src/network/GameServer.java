@@ -119,7 +119,7 @@ public class GameServer extends ConcreteDropBox<GameServer>
                     }
                     else
                     {
-                        info = info + "  " + gname + "  [Open]\n";
+                        info = info + "  " + gname + "  [Open] " + this.rooms.get(gname).roomLeft() + "\n";
                     }
                 }
             }

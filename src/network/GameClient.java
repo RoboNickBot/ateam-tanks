@@ -92,6 +92,7 @@ public class GameClient extends ConcreteDropBox<GameClient>
             sleep(100);
         } catch (InterruptedException e) {}
         this.outBox.killingYou();
+        this.toCW(new event.cw.ServerInfoEvent(" -- Disconnected -- "));
         //System.out.println(this.name + " Client has killed its netcore");
     }
 
@@ -110,6 +111,7 @@ public class GameClient extends ConcreteDropBox<GameClient>
             this.toUser(new event.user.PartEvent(reason));
             this.outBox.killingYou();
             this.outBox = new NetWorker<GameClient,User>().disconnect();
+            this.toCW(new event.cw.ServerInfoEvent(" -- Disconnected -- "));
         }
     }
 
