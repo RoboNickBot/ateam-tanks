@@ -65,6 +65,8 @@ public abstract class Sprite extends Object implements Serializable
 
     public abstract void paint(Graphics2D g);
 
+    public Arc2D.Double mark() {return Sprite.getCircle(1,1,1);}
+
     public void giveOrders(OrderQueue newOrders)
     {
         // for most sprites this does nothing

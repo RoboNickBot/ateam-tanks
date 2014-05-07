@@ -45,6 +45,8 @@ public class DemoPanel extends JPanel implements DisplaysGame, GetsOrders, Mouse
     Rectangle2D.Double gameViewRect;
 
     int state;
+    boolean givingOrder = false;
+    Sprite markSprite = null;
     SpriteList sprites;
     ArrayList<Sprite> sprites2;
     OrderQueue queue=null;
@@ -64,6 +66,7 @@ public class DemoPanel extends JPanel implements DisplaysGame, GetsOrders, Mouse
     public boolean initializeDisplay ( int mapSize ){
         gameViewRect=new Rectangle2D.Double(-mapSize,-mapSize,mapSize*2,mapSize*2);
         state=0;
+        givingOrder = false;
         sprites = new SpriteList();
         this.addMouseListener(this);
         this.addKeyListener(this);
@@ -99,6 +102,10 @@ public class DemoPanel extends JPanel implements DisplaysGame, GetsOrders, Mouse
 
         for (Sprite sprite : this.sprites2)
         {
+            this.markSprite = sprite;
+            this.givingOrder = true;
+            this.repaint();
+            System.out.println("should have just circled");
             this.queue = new OrderQueue(sprites.getFramesPerTurn(), sprite.uid());
             this.model = new UnitModel(sprite);
             this.models.add(this.model);
@@ -130,6 +137,7 @@ public class DemoPanel extends JPanel implements DisplaysGame, GetsOrders, Mouse
         ArrayList<OrderQueue> output = new ArrayList<OrderQueue>(this.orders);
         this.orders = new ArrayList<OrderQueue>();
         this.models = new ArrayList<UnitModel>();
+        this.givingOrder = false;
         this.repaint();
         return output;
     }
@@ -153,6 +161,27 @@ public class DemoPanel extends JPanel implements DisplaysGame, GetsOrders, Mouse
         double dy=(rect1.y+rect1.height)/rr+rect2.y;
         return new AffineTransform(1/rr,0,0,-1/rr,dx,dy);
     }
+
+    public AffineTransform getOtherTransform(){
+        Rectangle2D.Double rect1=gameViewRect;
+        Rectangle2D.Double rect2=new Rectangle2D.Double(0,0,getWidth(),getHeight());
+        double rr=0;
+        double rx=rect1.width/rect2.width;
+        double ry=rect1.height/rect2.height;
+        if(rx>ry){
+            rr=rx; 
+            rect2.y+=(rect2.height-rect1.height/rr)/2; 
+            rect2.height=rect1.height/rr; 
+        }else{ 
+            rr=ry; 
+            rect2.x+=(rect2.width-rect1.width/rr)/2; 
+            rect2.width=rect1.width/rr; 
+        } 
+        double dx=-rect1.x/rr+rect2.x;
+        double dy=(rect1.y+rect1.height)/rr+rect2.y;
+        return new AffineTransform(1/rr,0,0,1/rr,dx,dy);
+    }
+    
     @Override
     public void paint(Graphics g){
         Graphics2D g2=(Graphics2D) g;
@@ -175,6 +204,13 @@ public class DemoPanel extends JPanel implements DisplaysGame, GetsOrders, Mouse
         {
             UnitModel m = new UnitModel(sprites2.get(x));
             orders.get(x).walkModel ( m, g2 );
+        }
+        if(givingOrder)
+        {
+            g2.setColor(Color.white);
+            g2.draw(this.markSprite.mark());
+            g2.setTransform(getOtherTransform());
+            g2.drawString("You have " + this.framesLeft + " frames left for this tank.", -390, -380);
         }
     }
     public void mouseClicked(MouseEvent e){

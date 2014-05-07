@@ -142,4 +142,11 @@ public class SimpleTank extends Sprite implements Serializable
                                                    position.getY()+Math.sin(direction)*radius));
     }
 
+    public Arc2D.Double mark()
+    {
+        double radius = this.hitboxRadius + 5;
+        System.out.println("debuggg " + radius);
+        return Sprite.getCircle(position.getX(),position.getY(),radius);
+    }
+
 }
