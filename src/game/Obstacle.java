@@ -62,4 +62,8 @@ public class Obstacle extends Sprite implements Serializable
         g.setColor(Color.white);
         g.fill(Sprite.getCircle(position.getX(),position.getY(),radius));
     }
+    public void paintbox(Graphics2D g) {
+    	g.setColor(Color.blue);
+    	g.fill(Sprite.getRectangle(position.getX(), position.getY(),5,5));    	
+    }
 }

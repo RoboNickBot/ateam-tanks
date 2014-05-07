@@ -135,7 +135,9 @@ public class SimpleTank extends Sprite implements Serializable
     {
         double radius=this.hitboxRadius;
         g.setColor(this.color);
-        g.fill(Sprite.getCircle(position.getX(),position.getY(),radius));
+        g.fill(Sprite.getRectangle(position.getX(),position.getY(),6, 6));
+        g.fill(Sprite.getRectangle(position.getX(),position.getY(),  10, 2));
+        //g.fill(Sprite.getCircle(position.getX(),position.getY(),radius));
         g.setColor(Color.black);
         double direction=this.direction.getTheta()*Math.PI/180;
         g.draw(new Line2D.Double(position.getX(),position.getY(),position.getX()+Math.cos(direction)*radius,

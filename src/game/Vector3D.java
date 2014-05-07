@@ -91,6 +91,7 @@ public class Vector3D implements Serializable
     {
         return z;
     }
+   
 
     public String toString ()
     {

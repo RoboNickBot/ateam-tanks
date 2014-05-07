@@ -79,4 +79,9 @@ public class Direction implements Serializable
             return dir;
         }
     }
+    // method was added for bullets that have an arc  -B
+    public  void changephi(double x) {
+    	this.phi += x;
+    }
+    
 }

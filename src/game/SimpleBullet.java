@@ -67,4 +67,17 @@ public class SimpleBullet extends Projectile implements Serializable
             this . kill (sprites); // deletes self from game upon any sort of damage
         }
     }
+    // method added for giving bullets as arc -B
+    public void arcbullet() {
+    	 this.changegravity();
+    	 this.direction.changephi(10);
+    }
+    // method for drawing are bullets -B
+    public void paintarc(Graphics2D g) {
+    	double radius = this.velocity.getZ();
+    	g.setColor(Color.white);
+    	g.fill(Sprite.getCircle(position.getX(),position.getY(),radius));
+    }
+    
+    
 }

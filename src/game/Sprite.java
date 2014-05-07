@@ -127,4 +127,12 @@ public abstract class Sprite extends Object implements Serializable
     public static Arc2D.Double getCircle(double x,double y,double radius){
         return new Arc2D.Double(x-radius,y-radius,radius*2,radius*2,0,360,Arc2D.CHORD);
     }
+    public static Rectangle2D.Double getRectangle( double x, double y, int length, int width2){
+    	double width = width2;
+    	double height = length;
+    	return new Rectangle2D.Double(x,y, width ,height );
+    }
+    
+  
+    
 }
